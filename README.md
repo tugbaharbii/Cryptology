@@ -1,1 +1,5 @@
 # Cryptology
+
+Bu projede soket programlama sayesinde server üzerinden iki client birbiriyle haberleşirken üçüncü clientin bundan haberdar olamaması sağlanır. 
+Projede ilk olarak RSA algoritması ile birer tane public  ve private keyler  oluşturulur ve public keyler  server da private keyler ise clientlere gönderilir.
+Clientler birbir aralarında mesajlaşmak istediğinde AES algoritması ile  server da bir tane haberleşmek için ortak key üretilir ve bu key clientlerin kendi public keyleri tarafından şifrelenir ve kendilerine gönderilir. AES keyi şifreleme olayı  başka bir client iki clientin iletişimini dinleyememesi için yapılır. Şifreli keyi alan clientler kendi private keyleri ile keyi çözer ve mesajı şifrelemek için kullanırlar.Mesajı şifreledikten sonra HASH fonksiyonları sayesinde mesajın özetini çıkararak private keyle imzalar ve karşı cliente kendi public keyi ile  gönderir.Karşı taraf AES key ile mesajı çözer ,HASH fonksiyonu ile mesajın özetini çıkarır. Karşı tarafın public keyi ile imzayı karşılaştırır ve mesajın doğruluğunu onaylar.
